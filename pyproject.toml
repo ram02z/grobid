@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "grobid_client"
+version = "0.1.0"
+description = "Python library for requesting and serializing TEI XML to dataclass"
+authors = ["Omar Zeghouani <omarzeghouanii@gmail.com>"]
+license = "MIT"
+packages = [
+    { include = "grobid", from = "src" }
+]
+include = [
+    { path = "tests", format = "sdist" }
+]
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.11"
+lxml = "^4.9.1"
+bs4 = "^0.0.1"
+httpx = "^0.23.0"
+
+[tool.poetry.dev-dependencies]
+black = "^22.6.0"
+pytest = "^7.1.2"
+isort = "^5.10.1"
+coverage = {extras = ["toml"], version = "^6.4.2"}
+pydocstyle = "^6.1.1"
+flake8 = "^4.0.1"
+respx = "^0.19.2"
+pytest-asyncio = "^0.19.0"
+PyMuPDF = "^1.20.1"
+flake8-docstrings = "^1.6.0"
+Sphinx = "^5.0.2"
+myst-parser = "^0.18.0"
+furo = "^2022.6.21"
+
+[tool.isort]
+profile = "black"
+extend_skip = ["docs"]
+
+[tool.pydocstyle]
+convention = "google"
+match = "(?!__init).*\\.py"
+match-dir = "^(?!(.venv|docs)).*"
+
+[tool.black]
+target-version = ["py310"]
+extend-exclude = "docs"
+
+[tool.coverage.run]
+omit = ["*tests*"]
+
+[tool.coverage.report]
+exclude_lines = ["if __name__ == .__main__.:"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
