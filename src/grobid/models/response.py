@@ -1,6 +1,7 @@
 # noqa: D100
-from httpx import Headers, HTTPError
 from dataclasses import dataclass
+
+from httpx import Headers, HTTPError
 
 
 @dataclass

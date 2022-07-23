@@ -17,7 +17,7 @@ from grobid.models import (
     Section,
     Table,
 )
-from grobid.tei import Parser, GrobidParserError
+from grobid.tei import GrobidParserError, Parser
 
 
 class TestParse:

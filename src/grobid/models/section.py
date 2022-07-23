@@ -1,9 +1,11 @@
 """Represents the text sections in a scholarly article."""
 from dataclasses import dataclass, field
+
 try:
     from mashumaro.mixins.json import DataClassJSONMixin
 except ImportError:
     from grobid.models.misc import DataClassJSONMixin
+
 from enum import Enum
 
 
