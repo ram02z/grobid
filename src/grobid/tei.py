@@ -2,10 +2,12 @@
 
 Example::
 
+    from grobid.tei import Parser
+
     xml_content: bytes
     parser = Parser(xml_content)
     article = parser.parse()
-    article.to_json() # works if extra require 'json' is installed
+    article.to_json()  # throws RuntimeError if extra require 'json' not installed
 
 """
 import string

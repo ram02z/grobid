@@ -32,11 +32,11 @@ services. Specifically the [processFulltextDocument](https://grobid.readthedocs.
 
 
 ```python
-import path
-from grobid.models.form import Form
+from pathlib import Path
+from grobid.models.form import Form, File
 from grobid.models.response import Response
 
-pdf_file = path.Path("<your-academic-article>.pdf")
+pdf_file = Path("<your-academic-article>.pdf")
 with open(pdf_file, "rb") as file:
     form = Form(
         file=File(
@@ -47,7 +47,7 @@ with open(pdf_file, "rb") as file:
     )
     c = Client(base_url="<base-url>", form=form)
     try:
-        xml_content = c.sync_request().content # TEI XML file in bytes
+        xml_content = c.sync_request().content  # TEI XML file in bytes
     except GrobidClientError as e:
         print(e)
 ```
@@ -72,10 +72,12 @@ Not all of the GROBID annoation guidelines are met, but compliance is a goal.
 See [#1](https://github.com/ram02z/grobid_client_py/issues/1).
 
 ```python
+from grobid.tei import Parser
+
 xml_content: bytes
 parser = Parser(xml_content)
 article = parser.parse()
-article.to_json() # throws RuntimeError if extra require 'json' not installed
+article.to_json()  # throws RuntimeError if extra require 'json' not installed
 ```
 
 where `xml_content` is the same as in [Client section](#client)
@@ -83,11 +85,13 @@ where `xml_content` is the same as in [Client section](#client)
 Alternately, you can load the XML from a file:
 
 ```python
+from grobid.tei import Parser
+
 with open("<your-academic-article>.xml", "rb") as xml_file:
   xml_content = xml_file.read()
   parser = Parser(xml_content)
   article = parser.parse()
-  article.to_json() # throws RuntimeError if extra require 'json' not installed
+  article.to_json()  # throws RuntimeError if extra require 'json' not installed
 ```
 
 We use [mashumaro](https://github.com/Fatal1ty/mashumaro) to serialize the
