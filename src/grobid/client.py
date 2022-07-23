@@ -2,11 +2,11 @@
 
 Example::
 
-    import
-    from grobid.models.form import Form
+    from pathlib import Path
+    from grobid.models.form import Form, File
     from grobid.models.response import Response
 
-    pdf_file = path.Path("<your-academic-article>.pdf")
+    pdf_file = Path("<your-academic-article>.pdf")
     with open(pdf_file, "rb") as file:
         form = Form(
             file=File(
@@ -17,7 +17,7 @@ Example::
         )
         c = Client(base_url="<base-url>", form=form)
         try:
-            c.sync_request().content  # TEI XML file
+            xml_content = c.sync_request().content  # TEI XML file in bytes
         except GrobidClientError as e:
             print(e)
 
