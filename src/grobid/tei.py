@@ -1,5 +1,4 @@
-"""
-GROBID annotation guidelines compliant parser module.
+"""GROBID annotation guidelines compliant parser module.
 
 Example::
 
