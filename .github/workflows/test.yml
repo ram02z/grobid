@@ -26,7 +26,7 @@ jobs:
           --user
       - name: Install dependencies
         run: |
-          poetry install
+          poetry install -E json
       - name: Run flake8
         run: poetry run flake8 --config .flake8 --extend-ignore=D,E203 --verbose --statistics
       - name: Run isort
