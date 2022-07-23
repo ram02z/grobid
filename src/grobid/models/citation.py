@@ -1,10 +1,7 @@
 """Represents a citation, including all the relevant information."""
 from dataclasses import dataclass, field
 
-try:
-    from mashumaro.mixins.json import DataClassJSONMixin
-except ImportError:
-    from grobid.models.misc import DataClassJSONMixin
+from grobid.models.json import DataClassJSONMixin
 
 
 @dataclass

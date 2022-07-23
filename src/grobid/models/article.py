@@ -1,12 +1,8 @@
 # noqa: D100
 from dataclasses import dataclass, field
 
-try:
-    from mashumaro.mixins.json import DataClassJSONMixin
-except ImportError:
-    from grobid.models.misc import DataClassJSONMixin
-
 from grobid.models.citation import Citation
+from grobid.models.json import DataClassJSONMixin
 from grobid.models.section import Section
 
 

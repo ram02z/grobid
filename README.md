@@ -77,7 +77,7 @@ from grobid.tei import Parser
 xml_content: bytes
 parser = Parser(xml_content)
 article = parser.parse()
-article.to_json()  # throws RuntimeError if extra require 'json' not installed
+article.to_json()  # raises RuntimeError if extra require 'json' not installed
 ```
 
 where `xml_content` is the same as in [Client section](#client)
@@ -94,10 +94,9 @@ with open("<your-academic-article>.xml", "rb") as xml_file:
   article.to_json()  # throws RuntimeError if extra require 'json' not installed
 ```
 
-We use [mashumaro](https://github.com/Fatal1ty/mashumaro) to serialize the
-dataclasses into JSON (mashumaro supports other formats, you can submit a PR if
-you want). By default, mashumaro isn't installed, use `pip install
-grobid[json]`.
+We use [orjson](https://github.com/ijl/orjson) to provide a method `to_json` to
+serialize the dataclasses into JSON. By default, orjson isn't installed, use
+`pip install grobid[json]`.
 
 ## License
 
