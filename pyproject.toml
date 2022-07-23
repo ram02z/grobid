@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "grobid_client"
+name = "grobid_client_py"
 version = "0.1.0"
 description = "Python library for requesting and serializing TEI XML to dataclasses"
 authors = ["Omar Zeghouani <omarzeghouanii@gmail.com>"]
@@ -12,7 +12,7 @@ include = [
 ]
 
 readme = "README.md"
-repository = "https://github.com/ram02z/grobid_client"
+repository = "https://github.com/ram02z/grobid_client_py"
 keywords = ["GROBID", "XML", "dataclass"]
 
 classifiers = [
