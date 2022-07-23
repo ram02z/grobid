@@ -1,13 +1,17 @@
 # noqa: D100
-# TODO: use pydantic dataclass or BaseModel when pydantic is updated to v1.9
 from dataclasses import dataclass, field
+
+try:
+    from mashumaro.mixins.json import DataClassJSONMixin
+except ImportError:
+    from grobid.models.misc import DataClassJSONMixin
 
 from grobid.models.citation import Citation
 from grobid.models.section import Section
 
 
 @dataclass
-class Table:
+class Table(DataClassJSONMixin):
     """Represents the <figure> XML tag of type table."""
 
     heading: str
@@ -16,7 +20,7 @@ class Table:
 
 
 @dataclass
-class Article:
+class Article(DataClassJSONMixin):
     """Represents the scholarly article."""
 
     bibliography: Citation

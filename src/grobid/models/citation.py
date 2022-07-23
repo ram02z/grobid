@@ -1,10 +1,14 @@
 """Represents a citation, including all the relevant information."""
-# TODO: use pydantic dataclass or BaseModel when pydantic is updated to v1.9
 from dataclasses import dataclass, field
+
+try:
+    from mashumaro.mixins.json import DataClassJSONMixin
+except ImportError:
+    from grobid.models.misc import DataClassJSONMixin
 
 
 @dataclass
-class PageRange:
+class PageRange(DataClassJSONMixin):
     """Represents the 'to' and 'from' attributes in <biblScope/> XML tag."""
 
     from_page: int
@@ -12,7 +16,7 @@ class PageRange:
 
 
 @dataclass
-class Scope:
+class Scope(DataClassJSONMixin):
     """Represents the <biblScope/> XML tag."""
 
     volume: int | None = None
@@ -24,7 +28,7 @@ class Scope:
 
 
 @dataclass
-class Date:
+class Date(DataClassJSONMixin):
     """Represents the 'when' attribute in the <date/> XML tag."""
 
     year: str
@@ -33,7 +37,7 @@ class Date:
 
 
 @dataclass
-class PersonName:
+class PersonName(DataClassJSONMixin):
     """Represents the <persName/> XML tag."""
 
     surname: str
@@ -50,7 +54,7 @@ class PersonName:
 
 
 @dataclass
-class Affiliation:
+class Affiliation(DataClassJSONMixin):
     """Represents the <affiliation> XML tag."""
 
     # key: str
@@ -65,7 +69,7 @@ class Affiliation:
 
 
 @dataclass
-class Author:
+class Author(DataClassJSONMixin):
     """Represents the <author> XML tag."""
 
     person_name: PersonName
@@ -74,7 +78,7 @@ class Author:
 
 
 @dataclass
-class CitationIDs:
+class CitationIDs(DataClassJSONMixin):
     """Represents the <idno> XML tag."""
 
     DOI: str | None = None
@@ -89,7 +93,7 @@ class CitationIDs:
 
 
 @dataclass
-class Citation:
+class Citation(DataClassJSONMixin):
     """Represents the <biblStruct> XML tag."""
 
     title: str

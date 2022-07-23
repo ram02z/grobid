@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "grobid_client"
 version = "0.1.0"
-description = "Python library for requesting and serializing TEI XML to dataclass"
+description = "Python library for requesting and serializing TEI XML to dataclasses"
 authors = ["Omar Zeghouani <omarzeghouanii@gmail.com>"]
 license = "MIT"
 packages = [
@@ -11,11 +11,21 @@ include = [
     { path = "tests", format = "sdist" }
 ]
 
+readme = "README.md"
+repository = "https://github.com/ram02z/grobid_client"
+keywords = ["GROBID", "XML", "dataclass"]
+
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
 [tool.poetry.dependencies]
 python = ">=3.10,<3.11"
 lxml = "^4.9.1"
 bs4 = "^0.0.1"
 httpx = "^0.23.0"
+mashumaro = {optional = true, version = "^3.0.3"}
 
 [tool.poetry.dev-dependencies]
 black = "^22.6.0"
@@ -31,6 +41,9 @@ flake8-docstrings = "^1.6.0"
 Sphinx = "^5.0.2"
 myst-parser = "^0.18.0"
 furo = "^2022.6.21"
+
+[tool.poetry.extras]
+json = ["mashumaro"]
 
 [tool.isort]
 profile = "black"
@@ -49,7 +62,7 @@ extend-exclude = "docs"
 omit = ["*tests*"]
 
 [tool.coverage.report]
-exclude_lines = ["if __name__ == .__main__.:"]
+exclude_lines = ["if __name__ == .__main__.:", "except ImportError:"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

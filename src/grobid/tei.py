@@ -6,6 +6,7 @@ Example::
     xml_content: bytes
     parser = Parser(xml_content)
     article = parser.parse()
+    article.to_json() # works if extra require 'json' is installed
 
 """
 import string

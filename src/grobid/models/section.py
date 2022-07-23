@@ -1,6 +1,9 @@
 """Represents the text sections in a scholarly article."""
-# TODO: use pydantic dataclass or BaseModel when pydantic is updated to v1.9
 from dataclasses import dataclass, field
+try:
+    from mashumaro.mixins.json import DataClassJSONMixin
+except ImportError:
+    from grobid.models.misc import DataClassJSONMixin
 from enum import Enum
 
 
@@ -18,7 +21,7 @@ class Marker(str, Enum):
 
 
 @dataclass
-class Ref:
+class Ref(DataClassJSONMixin):
     """Represents <ref> XML tag.
 
     Stores the start and end positions of the reference rather than the text.
@@ -31,7 +34,7 @@ class Ref:
 
 
 @dataclass
-class RefText:
+class RefText(DataClassJSONMixin):
     """Represents the <p> XML tag.
 
     Supports embedded <ref> XML tags.
@@ -60,7 +63,7 @@ class RefText:
 
 
 @dataclass
-class Section:
+class Section(DataClassJSONMixin):
     """Represents <div> tag with <head> tag."""
 
     title: str
